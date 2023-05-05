@@ -1,6 +1,8 @@
 const Picture = require('../models/pictures')
+const Collection = require('../models/collections')
 
 exports.getAllPictures = async (req, res, next) => {
+
     res.send(`
         <form action="./pictures/" method="POST" encType="multipart/form-data">
         <h3>Upload a photo</h3>

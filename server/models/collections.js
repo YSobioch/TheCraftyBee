@@ -28,6 +28,12 @@ class Collection {
 
         return db.execute(sql)
     }
+
+    static test() {
+        let sql = `SELECT cast(aes_decrypt(color, 'key') AS char) FROM color`
+
+        return db.execute(sql)
+    }
 }
 
 module.exports = Collection
