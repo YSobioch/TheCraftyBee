@@ -7,4 +7,11 @@ function getDate() {
     return `${yyyy}-${mm}-${dd}`
 }
 
-module.exports = getDate
+function getTime() {
+    const date = new Date()
+    let time = `${date.getHours()}:${date.getMinutes()}`
+
+    return time
+}
+
+module.exports = { getDate, getTime }

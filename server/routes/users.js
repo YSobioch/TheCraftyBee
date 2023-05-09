@@ -12,6 +12,7 @@ router.route("/updateUser/:name/:password")
 
 
 router.route("/deleteUser/:name/:password")
+        .get(userControllers.deleteUserForm)
         .delete(userControllers.deleteUser)
         
 router.route("/:name/:password").get(userControllers.getUserByName);

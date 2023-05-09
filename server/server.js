@@ -9,6 +9,9 @@ const listingsRoute = require('./routes/listings');
 const picturesRoute = require('./routes/pictures');
 const listingPicturesRoute = require('./routes/listing_pictures')
 const usersRoute = require('./routes/users')
+const cartRoute = require('./routes/cart')
+
+const receiptRoute = require('./routes/receipt')
 const collectionRoute = require('./routes/collections')
 
 app.use(cors());
@@ -19,7 +22,9 @@ app.use('/listings', listingsRoute)
 app.use('/pictures', picturesRoute)
 app.use('/listingPictures', listingPicturesRoute)
 app.use('/collections', collectionRoute)
+app.use('/cart', cartRoute)
 app.use('/users', usersRoute)
+app.use('/receipts', receiptRoute)
 app.post('/', (req, res) => {res.send('ended up here')})
 
 app.listen(8000, () => {

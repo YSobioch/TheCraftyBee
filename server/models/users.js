@@ -62,6 +62,7 @@ class User {
 
         return db.execute(sql)
     }
+    
     static isUser(username) {
         let sql = `SELECT cast(aes_decrypt(password, '${process.env.DB_KEY}') AS char) FROM users WHERE users.username = '${username}'`;
 
