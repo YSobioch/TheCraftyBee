@@ -15,6 +15,14 @@ class Cart {
         return db.execute(sql);
     }
 
+    static empty(id) {
+        let sql = `
+        DELETE FROM cart WHERE cart.cart_owner_id = ${id}
+        `
+
+        return db.execute(sql)
+    }
+
     static getAllCartsByCartOwnerId(userId) {
         let sql = `
         SELECT * FROM cart WHERE cart.cart_owner_id = ${userId}
@@ -31,7 +39,16 @@ class Cart {
         return db.execute(sql)
     }
 
-    
+    static findItemsInCartByUserId(id) {
+        let sql = `
+        SELECT listings.id, listings.name, listings.price, listings.sale_amount FROM users
+        INNER JOIN cart ON cart.cart_owner_id = users.id
+        INNER JOIN listings ON listings.id = cart.listing_id
+        WHERE users.id = ${id}
+        `
+
+        return db.execute(sql)
+    }
 }
 
 module.exports = Cart

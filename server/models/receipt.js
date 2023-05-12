@@ -38,7 +38,7 @@ class Receipt {
         SELECT * FROM receipts WHERE receipts.id = ${id}
         `
 
-        db.execute(sql);
+        return db.execute(sql);
     }
 
     static findAllReceiptsByOwnerId(id) {
@@ -46,7 +46,18 @@ class Receipt {
         SELECT * FROM receipts WHERE receipts.receipt_owner = ${id}
         `
 
-        db.execute(sql)
+        return db.execute(sql)
+    }
+
+    static findLastReceiptMadeForUser(id) {
+        let sql = `
+        SELECT * FROM receipts
+        WHERE receipts.receipt_owner = ${id}
+        ORDER BY receipts.id DESC
+        LIMIT 1
+        `
+
+        return db.execute(sql)
     }
 }
 

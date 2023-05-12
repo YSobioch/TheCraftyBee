@@ -3,6 +3,7 @@ const receiptController = require('../controllers/receiptController');
 const router = express.Router()
 
 router.route('/')
+    .get(receiptController.createReceiptForm)
     .post(receiptController.createReceipt)
 
 router.route('/ById/:id')

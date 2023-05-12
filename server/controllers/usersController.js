@@ -29,8 +29,8 @@ exports.createNewUser = async (req, res, next) => {
     try {
         user = new User(userName, password, email, false)
 
-        user.save();
-        res.status(200).send("new user succesfully created")
+        let [returnUser, _] = await user.save();
+        res.status(200).json(returnUser)
     } catch (err) {
         console.log(err)
     }
