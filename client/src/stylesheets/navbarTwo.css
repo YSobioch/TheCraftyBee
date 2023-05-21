@@ -1,0 +1,15 @@
+.navigation {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 1.3rem;
+    padding-right: 3rem;
+    list-style: none;
+    font-family: 'Merriweather', serif;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    font-size: .9rem;
+}

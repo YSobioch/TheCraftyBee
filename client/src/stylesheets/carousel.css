@@ -1,0 +1,19 @@
+.select-by {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 1rem;
+    font-family: 'Lexend Tera', sans-serif;
+    font-weight: 100;
+}
+
+.selector {
+    cursor: pointer;
+}
+
+.selected {
+    cursor: pointer;
+    text-decoration-line: underline;
+    text-underline-position: below;
+    color: #6bb65c;
+}

@@ -1,5 +1,9 @@
 import { PageHolder } from "./components/PageHolder";
+import { NavbarOne } from "./components/NavbarOne";
+import { NavbarTwo } from "./components/NavbarTwo"
+import { Footer } from "./components/Footer";
 import { createStore } from "redux";
+import { Provider } from "react-redux";
 
 const initalState = {
   userId: null,
@@ -11,18 +15,38 @@ const initalState = {
 }
 
 const reducer = (state = initalState, action) => {
+  let newCart;
+  switch(action.type) {
+    case "ADD_TO_CART":
+      newCart = state.cart
+      newCart.push(action.id)
+      return {
+        cart: newCart
+      }
+    case "REMOVE_FROM_CART":
+      newCart = state.cart
 
+    default:
+      return state
+  }
 }
 
 const store = createStore(reducer);
 
 function App() {
   return (
-    <>
-    <h1>NavBar Here</h1>
-    <PageHolder />
-    <h1>Footer here</h1>
-    </>
+    <Provider store={store}>
+      <div>
+        <NavbarOne />
+        <NavbarTwo />
+      </div>
+      <div>
+        <PageHolder />
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </Provider>
   )
 }
 

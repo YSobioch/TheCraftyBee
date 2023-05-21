@@ -1,0 +1,56 @@
+@import url(main.css);
+
+.outerContainer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.rightContainer {
+    height: 30rem;
+    background-image: url('../assets/theCraftyBeeLogo.png');
+    background-position: center center;
+}
+
+.leftContainer {
+    background-color: var(--mainColorTwo);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 25%;
+    padding-right: 25%;
+    align-items: center;
+    text-align: center;
+}
+
+.alt-font {
+    margin-top: -10px;
+    font-family: 'Lexend Tera', sans-serif;
+    font-weight: 100;
+}
+
+.btn {
+    height: 40px;
+    width: 100px;
+    background-color: white;
+    border: none;
+    border-radius: 25px; 
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #97c4b8;
+    transition: .3s ease-in;
+}
+
+@media (max-width: 35em) {
+    .outerContainer {
+        display: grid;
+        grid-template-columns: auto;
+    }
+
+}

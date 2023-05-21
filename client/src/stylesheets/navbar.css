@@ -1,0 +1,134 @@
+@import url(main.css);
+
+.site-title {
+    font-size: 2.5rem;
+    align-self: center;
+    padding-top: 10px;
+    font-family: 'Special Elite', cursive;
+    font-weight: 200;
+    text-align: center;
+}
+
+.site-title-mobile {
+    align-self: center;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    display: none;
+    font-size: 2rem;
+    font-family: 'Special Elite', cursive;
+    font-weight: 200;
+    max-width: 80%;
+}
+
+.flex {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.primary-header {
+    background: var(--mainColor);
+    padding: 10px;
+}
+
+.mobile-nav-toggle {
+    display: none;
+}
+
+.primary-navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}
+
+.title-style {
+    text-decoration: none;
+    color: black;
+    list-style: none;
+}
+
+.link-style {
+    font-family: 'Merriweather', serif;
+    text-decoration: none;
+    color: black;
+    list-style: none;
+}
+
+.link-style:hover {
+    color: grey;
+}
+
+
+
+@media (max-width: 35em) {
+    .primary-navigation {
+        position: fixed;
+        inset: 0 0 0 65%;
+        z-index: 1000;
+        flex-direction: column;
+        padding: min(10vh, 10rem) 1em;
+        transition: transform 250ms ease-out;
+        transform: translateX(0%);
+        background: var(--mainColorTwo);
+    }
+
+    .flex {
+        justify-content: start;
+        align-items: start;
+    }
+
+    .site-title-mobile {
+        display: block
+    }
+
+    .show {
+        transform: translateX(100%);
+    }
+
+    .site-title {
+        display: none;
+    }
+
+    .mobile-nav-toggle {
+        position: absolute;
+        z-index: 9999;
+        display: block;
+        aspect-ratio: 1;
+        top: 1rem;
+        right: 1rem;
+        background: url('../assets/Group\ 1.png');
+        background-size: contain;
+        width: 2rem;
+        border: 0;
+    }
+}
+
+
+
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+	-webkit-clip-path: inset(50%) !important;
+		clip-path: inset(50%) !important;  /* 2 */
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;            /* 3 */
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+	clip: auto !important;
+	-webkit-clip-path: none !important;
+		clip-path: none !important;
+	height: auto !important;
+	margin: auto !important;
+	overflow: visible !important;
+	width: auto !important;
+	white-space: normal !important;
+}
