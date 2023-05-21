@@ -35,9 +35,9 @@ exports.getListingById = async (req, res, next) => {
         let [listing, _] = await Listing.findById(req.params.id);
 
         for(let i = 0; i < listing.length; i++) {
-            let thisListing = listings[i];
-            let [listingPictures, _] = await ListingPictures.findAllPicturesByListingId(listing.id);
-            thisListing.picures = listingPictures
+            let thisListing = listing[i];
+            let [listingPictures, _] = await ListingPictures.findAllPicturesByListingId(req.params.id);
+            thisListing.pictures = listingPictures
         }
 
         res.status(200).json(listing[0])

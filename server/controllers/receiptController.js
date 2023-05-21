@@ -75,7 +75,7 @@ exports.getAllReceiptsByOwnerId = async (req, res, next) => {
 
 const getTotal = (listingArr) => {
     let total = 0;
-    listingArr.forEach(listing => {
+    listingArr.forEach(listing => { 
         total += (listing.price - (listing.price * listing.sale_amount))
     })
 
