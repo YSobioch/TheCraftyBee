@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CarouselPictures from "./CaroselPictures";
 
 import '../stylesheets/carousel.css'
 
@@ -36,7 +37,7 @@ export default function Carousel() {
                 <li>SHOP BY:</li>
                 {selected}
         </ul>
-        
+        <CarouselPictures />
         </>
     )
 }

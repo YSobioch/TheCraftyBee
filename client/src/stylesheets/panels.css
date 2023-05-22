@@ -1,0 +1,77 @@
+@import url(main.css);
+
+.panelHolder {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 3rem;
+    margin-left: 5%;
+    margin-right: 5%;
+    overflow: hidden;
+    row-gap: 0;
+}
+
+.panel {
+    overflow: hidden;
+    z-index: 999;
+    height: 470px;
+
+}
+
+.panel img {
+    align-items: center;
+    height: 450px;
+    width: 400px;
+    transform: scale(1.1);
+    transition: .4s ease-out;
+    cursor: pointer;
+}
+
+.panel img:hover {
+    transform: scale(1.2);
+    transition: .4s ease-out;
+}
+
+.panel-text {
+    z-index: 999;
+    margin-top: -20px;
+    position: relative;
+    text-align: center;
+    font-weight: 100;
+    font-family: 'Special Elite', cursive;
+}
+
+.button-group-header {
+    font-family: 'Special Elite', cursive;
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 100;
+}
+
+.comment-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 2rem;
+    text-align: center;
+}
+
+.panel-paragraph {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+.panel-button {
+    height: 40px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: var(--offColor);
+    border: none;
+    border-radius: 25px; 
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+}
+
+.panel-button:hover {
+    cursor: pointer;
+}

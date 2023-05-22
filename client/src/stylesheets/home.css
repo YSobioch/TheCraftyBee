@@ -1,10 +1,13 @@
 @import url(main.css);
 
+.container {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
 .outerContainer {
     display: grid;
     grid-template-columns: 50% 50%;
-    margin-left: 15%;
-    margin-right: 15%;
 }
 
 .rightContainer {
@@ -39,6 +42,7 @@
     border-radius: 25px; 
     font-family: 'Times New Roman', Times, serif;
     font-size: 1.3rem;
+    transition: .3s ease-in;
 }
 
 .btn:hover {
@@ -48,6 +52,12 @@
 }
 
 @media (max-width: 35em) {
+
+    .container {
+        margin: 0;
+        overflow: hidden;
+    }
+
     .outerContainer {
         display: grid;
         grid-template-columns: auto;
