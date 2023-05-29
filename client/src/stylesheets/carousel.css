@@ -38,6 +38,7 @@
 .pictureHolder {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;
+    overflow: hidden;
     list-style: none;
 }
 

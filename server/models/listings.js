@@ -44,10 +44,47 @@ class listing {
         return db.execute(sql)
     }
 
-    static findAllByCollectionId(id) {
-        let sql = `
-        SELECT * FROM listings WHERE listings.collection = ${id}
-        `
+    static findAllByCollectionId(collectionId, shapesArr, colorArr) {
+        let collectionOption = ``
+        let shapesOption = []
+        let colorsOption = []
+        let completedQuery = []
+
+
+        if(collectionId !== "null") collectionOption = `listings.collection = ${collectionId}`
+
+        if(typeof shapesArr !== "undefined") {
+            if(typeof shapesArr === 'string') {
+                shapesOption.push(`shape = ${shapesArr}`)
+            } else {
+
+                for(let id of shapesArr) {
+                    shapesOption.push(`shape = ${id}`)
+                }
+            }
+        }
+
+        if(typeof colorArr !== "undefined") {
+            if(typeof colorArr === 'string') {
+                colorsOption.push(`color = ${colorArr}`)
+            } else {
+                for(let id of colorArr) {
+                    colorsOption.push(`color = ${id}`)
+                }
+            }
+        }
+
+
+        let workingQuery = [`(${collectionOption})`, `(${shapesOption.join(' OR ')})`, `(${colorsOption.join(' OR ')})`]
+
+        for(let str of workingQuery) {
+            if(str.length === 2) continue;
+            completedQuery.push(str)
+        }
+        completedQuery = completedQuery.join(" AND ")
+
+        if(completedQuery.length) completedQuery = " WHERE " + completedQuery
+        let sql = 'SELECT * FROM listings' + completedQuery
 
         return db.execute(sql)
     }

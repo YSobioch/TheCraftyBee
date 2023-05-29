@@ -4,7 +4,7 @@ import '../stylesheets/navbarTwo.css'
 
 export function NavbarTwo() {
     return (
-      <nav>
+      <nav className='nav-two-background'>
         <ul className="navigation">
           <li><Link to='/' className='link'>Shop All</Link></li>
           <li><Link to='/' className='link'>Seasonal</Link></li>

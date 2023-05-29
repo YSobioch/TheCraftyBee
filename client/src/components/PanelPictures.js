@@ -20,7 +20,7 @@ export default function PanelPictures() {
         <br></br>
         <br></br>
         <div>
-            <h1 className='button-group-header'>Bee Kind. Bee Bold. Bee beYoutiful!</h1>
+            <h1 className='button-group-header'>Bee Kind. Bee Bold. Bee BeYoutiful!</h1>
             
             <div className='comment-container'>
                 <div>
@@ -36,6 +36,27 @@ export default function PanelPictures() {
                     <button className='panel-button'>SOMETHING FOR EVERYONE</button>
                 </div>
             </div>
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div>
+            <h3 className='instagram-header'>Follow Our Instagram</h3>
+
+            <div className="instagram-panelHolder">
+            <div className='instagram-panel'>
+                <img src={require('../assets/instagram/Instagram1.jpg')} className='panel-picture'/>
+            </div>
+            <div className='instagram-panel'>
+                <img src={require('../assets/instagram/Instagram3.jpg')} className='panel-picture'/>
+            </div>
+            <div className='instagram-panel'>
+                <img src={require('../assets/instagram/Instagram2.jpg')} className='panel-picture'/>
+            </div>
+            <div className='instagram-panel'>
+                <img src={require('../assets/instagram/Instagram4.JPG')} className='panel-picture'/>
+            </div>
+        </div>
         </div>
         </>
     )

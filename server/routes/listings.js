@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.route("/").get(listingControllers.getAllListings).post(listingControllers.createNewListing);
 
-router.route("/listingsInCollection/:id").get(listingControllers.getAllListingsInCollection);
+router.route("/listingsInCollection").get(listingControllers.getAllListingsInCollection);
 
 router.route("/:id").get(listingControllers.getListingById);
 

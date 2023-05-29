@@ -1,0 +1,65 @@
+@import url('main.css');
+
+.sign-in-holder {
+    background: rgba(0, 0, 0, 0.61);
+    position: fixed;
+    z-index: 9999;
+    height: 100%;
+    width: 100%;
+    margin-left: -10px;
+    margin-top: -10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.sign-in-div {
+    background: white;
+    height: 600px;
+    width: 400px;
+    position: absolute;
+    top: 15%;
+    border-radius: 40px;
+}
+
+.sign-in-container {
+    padding: 25px;
+}
+
+.sign-in-form input {
+    width: 97%;
+    height: 40px;
+    font-size: 20px;
+}
+
+.sign-in-button {
+    width: 100%;
+    border-radius: 10px;
+    height: 40px;
+    background: var(--mainColor);
+    border: none;
+    cursor: pointer;
+}
+
+.sign-in-exit-button {
+    position: absolute;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    top: 0;
+    right: 0;
+    margin-right: -40px;
+    margin-top: 5px;
+    font-size: 1.8rem;
+    border-radius: 20px;
+    border: 1px;
+    cursor: pointer;
+}
+
+.hide-error-message {
+    display: none;
+}
+
+.show-error-message {
+    display: block;
+}

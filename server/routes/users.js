@@ -6,15 +6,16 @@ router.route("/")
         .get(userControllers.getAllUsers)
         .post(userControllers.createNewUser);
 
-router.route("/updateUser/:name/:password")
-        .get(userControllers.updateUserForm)
-        .put(userControllers.updateUser)
+router.route("/updateUserPassword")
+        .put(userControllers.changePassword)
 
+router.route("/updateUserSubscription")
+        .put(userControllers.changeSubscriptionStatus)
 
 router.route("/deleteUser/:name/:password")
         .get(userControllers.deleteUserForm)
         .delete(userControllers.deleteUser)
         
-router.route("/:name/:password").get(userControllers.getUserByName);
+router.route("/:email/:password").get(userControllers.getUserByEmail);
 
 module.exports = router;

@@ -10,7 +10,7 @@ exports.getAllListings = async (req, res, next) => {
         for(let i = 0; i < listings.length; i++) {
             let listing = listings[i];
             let [listingPictures, _] = await ListingPictures.findAllPicturesByListingId(listing.id);
-            listing.picures = listingPictures
+            listing.pictures = listingPictures
         }
         res.status(200).json(listings)
     } catch (err) {
@@ -48,12 +48,14 @@ exports.getListingById = async (req, res, next) => {
 
 exports.getAllListingsInCollection = async (req, res, next) => {
     try {
-        let [listings, _] = await Listing.findAllByCollectionId(req.params.id)
+        let { shapes, colors, collection } = req.query
 
+        let [listings, _] = await Listing.findAllByCollectionId(collection, shapes, colors)
+        
         for(let i = 0; i < listings.length; i++) {
             let listing = listings[i];
             let [listingPictures, _] = await ListingPictures.findAllPicturesByListingId(listing.id);
-            listing.picures = listingPictures
+            listing.pictures = listingPictures
         }
 
         res.status(200).json(listings)

@@ -57,7 +57,7 @@
 }
 
 .link-style:hover {
-    color: grey;
+    cursor: pointer;
 }
 
 
@@ -131,4 +131,12 @@
 	overflow: visible !important;
 	width: auto !important;
 	white-space: normal !important;
+}
+
+.sign-in {
+    display: block;
+}
+
+.sign-in-hide {
+    display: none;
 }

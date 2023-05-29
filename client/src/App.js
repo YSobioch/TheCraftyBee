@@ -1,35 +1,12 @@
-import { PageHolder } from "./components/PageHolder";
-import { NavbarOne } from "./components/NavbarOne";
+import  PageHolder  from "./components/PageHolder";
+import NavbarOne from "./components/NavbarOne";
 import { NavbarTwo } from "./components/NavbarTwo"
 import { Footer } from "./components/Footer";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import { reducer } from './redux/storeState'
 
-const initalState = {
-  userId: null,
-  userName: null,
-  userPassword: null,
-  userEmail: null,
-  userSubscribed: null,
-  cart: []
-}
-
-const reducer = (state = initalState, action) => {
-  let newCart;
-  switch(action.type) {
-    case "ADD_TO_CART":
-      newCart = state.cart
-      newCart.push(action.id)
-      return {
-        cart: newCart
-      }
-    case "REMOVE_FROM_CART":
-      newCart = state.cart
-
-    default:
-      return state
-  }
-}
+import './app.css'
 
 const store = createStore(reducer);
 
@@ -38,13 +15,16 @@ function App() {
     <Provider store={store}>
       <div>
         <NavbarOne />
+        <div className="line"></div>
         <NavbarTwo />
       </div>
-      <div>
+      <div className="line"></div>
+      <div className="page-holder">
         <PageHolder />
+        <Footer />
       </div>
       <div>
-        <Footer />
+        
       </div>
     </Provider>
   )

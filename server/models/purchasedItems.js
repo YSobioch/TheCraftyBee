@@ -18,7 +18,8 @@ class PurchasedItems {
 
     static findAllItemsByReceiptId(id) {
         let sql = `
-        SELECT * FROM purchased_items WHERE purchased_items.receipt_id = ${id}
+        SELECT * FROM purchased_items 
+        INNER JOIN listings WHERE listings.id = purchased_items.item_id AND purchased_items.receipt_id = ${id}
         `
 
         return db.execute(sql)

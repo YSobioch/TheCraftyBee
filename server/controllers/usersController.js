@@ -24,9 +24,10 @@ exports.getAllUsers = async (req, res, next) => {
 }
 
 exports.createNewUser = async (req, res, next) => {
-    let user;
-    let {userName, password, email} = req.body
     try {
+        let user;
+        let {userName, password, email} = req.body
+
         user = new User(userName, password, email, false)
 
         let [returnUser, _] = await user.save();
@@ -38,14 +39,14 @@ exports.createNewUser = async (req, res, next) => {
 } 
 
 //checks to see if the Username and Password are correct and then returns the users data
-exports.getUserByName = async (req, res, next) => {
+exports.getUserByEmail = async (req, res, next) => {
     let user;
     try {
-        [user, _] = await User.isUser(req.params.name)
+        [user, _] = await User.isUser(req.params.email)
         const password = Object.values(user[0])[0];
         
         if(password === req.params.password) {
-            let [returnUser, _] = await User.findUserByUsername(req.params.name)
+            let [returnUser, _] = await User.findUserByEmail(req.params.email)
             returnUser = returnUser[0];
             returnUser.password = password
             res.json({"isUser": true, "isPassword": true, "User": returnUser})
@@ -58,28 +59,41 @@ exports.getUserByName = async (req, res, next) => {
     }
 }
 
-exports.updateUser = async (req, res, next) => {
-
-    let { name, password } = req.params
-    let { userName, email, subscribed } = req.body
-    let newPassword = req.body.password
-    
+exports.changeSubscriptionStatus = async (req, res, next) => {
     try {
+        let {change, password, email} = req.body
+
         let user = await updateAndDelete.updateUserById(
-            `username = '${userName}', 
-            password = aes_encrypt('${newPassword}', '${process.env.DB_KEY}'), 
-            email = '${email}', 
-            subscribed = ${subscribed}`,
-            name,
+            `subscribed = ${change}`,
+            email,
             password
         )
 
-        res.status(200).json({"updated": true});
+        res.status(200).json({"changedSubscription": true})
+
     } catch (err) {
-        console.log(err);
-        res.json({"updated": false})
+        console.log(err)
+        res.json({"changedSubscription": false})
     }
 }
+
+exports.changePassword = async (req, res, next) => {
+    try {
+        let {email, password, newPassword} = req.body
+
+        let user = await updateAndDelete.updateUserById(
+            `password = aes_encrypt('${newPassword}', '${process.env.DB_KEY}')`,
+            email,
+            password
+        )
+
+        res.status(200).json({"changedPassword": true})
+    } catch (err) {
+        console.log(err)
+        res.json({"changedPassword": false})
+    }
+}
+
 
 exports.deleteUser = async (req, res, next) => {
     try {

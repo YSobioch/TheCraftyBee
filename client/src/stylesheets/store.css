@@ -1,0 +1,181 @@
+@import url('main.css');
+
+.store-container {
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    gap: 1rem;
+    height: 100%;
+}
+
+.left-panel {
+    width: 25%;
+}
+
+.right-panel {
+    width: 60%;
+}
+
+.banner-img {
+    height: 300px;
+}
+
+.banner-title {
+    font-family: 'Lexend Tera', sans-serif;
+    font-weight: 100;
+    font-size: 2rem;
+}
+
+.left-panel p {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.collection-name:hover {
+    text-decoration-line: underline;
+}
+
+.listing-grid {
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    gap: 3rem;
+    transition: .3s ease-out;
+}
+
+.listing {
+    height: 430px;
+    width: 250px;
+    font-family: 'Lexend Tera', sans-serif;
+    font-weight: 100;
+    position: relative;
+    transition: .3s ease-out;
+    overflow: hidden;
+}
+
+.listing:hover {
+    cursor: pointer;
+
+    transition: .3s ease-out;
+    
+    .primary {
+        display: none;
+    }
+
+    .secondary {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .slow-transition {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.listing-line {
+    border-top: 4px solid var(--mainColor);
+    margin-top: -4px;
+}
+
+.primary {
+    visibility: visible;
+    opacity: 1;
+    transition: .3s ease-in-out;
+}
+
+.secondary {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.slow-transition {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.7s linear;
+}
+
+.info-holder h1 {
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+.info-holder p {
+    font-size: .8rem;
+    color: rgb(88, 87, 87);
+}
+
+.button-holder {
+    display: flex;
+    bottom: 10px;
+    position: absolute;
+    justify-content: center;
+    width: 100%;
+}
+
+.cart-button {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: var(--mainColor);
+    border: none;
+    border-radius: 25px; 
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    transition: .3s ease-in;
+}
+
+.cart-button:hover {
+    cursor: pointer;
+}
+
+.price {
+    bottom: 0;
+    position: absolute;
+}
+
+.listing img {
+    height: 250px;
+    width: 250px;
+}
+
+.collection-title {
+    font-family: 'Lexend Tera', sans-serif;
+    font-weight: 100;
+}
+
+.spacer {
+    height: 300px;
+}
+
+.admin-link {
+    text-decoration: none;
+    color: var(--mainColor);
+}
+
+.filter-title {
+    font-family: 'Lexend Tera', sans-serif;
+}
+
+.filter-options-holder {
+    margin-top: -15px;
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    gap: 1rem;
+}
+
+.filter-option {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    transition: .3s ease-out;
+
+}
+
+.filter-selected {
+    background: var(--mainColorTwo);
+    transition: .3s ease-out;
+}

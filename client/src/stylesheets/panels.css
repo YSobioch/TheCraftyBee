@@ -75,3 +75,32 @@
 .panel-button:hover {
     cursor: pointer;
 }
+
+.instagram-header {
+    font-family: 'Special Elite', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 100; 
+}
+
+.instagram-panelHolder {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 2rem;
+    overflow: hidden;
+    row-gap: 0;
+}
+
+.instagram-panel {
+    overflow: hidden;
+    z-index: 999;
+    height: 470px;
+
+}
+
+.instagram-panel img {
+    align-items: center;
+    height: 350px;
+    width: 330px;
+    cursor: pointer;
+}

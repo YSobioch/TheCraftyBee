@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import initalState from "../state/listingStateHelper"
+import initalState from "../redux/listingStateHelper"
 
 function Listing({ dispatch }) {
     const { id } = useParams()

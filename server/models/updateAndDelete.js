@@ -1,13 +1,12 @@
 const db = require('../config/db')
 const User = require('./users')
 
-const adminUser = async (userName, password) => {
+const adminUser = async (email, password) => {
     let user;
     try{
-        [user, _] = await User.isUser(userName)
+        [user, _] = await User.isUser(email)
         const userPassword = Object.values(user[0])[0];
 
-        console.log(user)
         return userPassword === password
     } catch (err) {
         console.log("admin user function:" + err)
@@ -15,11 +14,11 @@ const adminUser = async (userName, password) => {
     }
 }
 
-exports.updateUserById = async (columns, userName, password) => {
-    let isAdmin = await adminUser(userName, password)
+exports.updateUserById = async (columns, email, password) => {
+    let isAdmin = await adminUser(email, password)
     if(!isAdmin) return
 
-    let [user, _] = await User.findUserByUsername(userName);
+    let [user, _] = await User.findUserByEmail(email);
     user = user[0]
 
     let sql = `

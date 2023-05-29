@@ -51,6 +51,46 @@
     transition: .3s ease-in;
 }
 
+.sign-up {
+    background: var(--mainColor);
+    padding: 1rem 20% 2rem 20%;
+    margin-bottom: -10px;
+}
+
+.sign-up-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.sign-up-grid h4 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.sign-up-header {
+    font-family: 'Special Elite', cursive;
+    font-weight: 100;
+}
+
+.email-form {
+    background-color: var(--mainColor);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+}
+
+.email-form:focus {
+    outline: none;
+}
+
+.submit-button {
+    border: none;
+}
+
+.submit-button:hover {
+    cursor: pointer;
+}
+
 @media (max-width: 35em) {
 
     .container {

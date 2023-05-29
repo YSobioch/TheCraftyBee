@@ -55,16 +55,16 @@ class User {
         return db.execute(sql)
     }
 
-    static findUserByUsername(username) {
+    static findUserByEmail(email) {
         let sql = `
-        SELECT * FROM users WHERE users.username = '${username}'
+        SELECT * FROM users WHERE users.email = '${email}'
         `
 
         return db.execute(sql)
     }
     
-    static isUser(username) {
-        let sql = `SELECT cast(aes_decrypt(password, '${process.env.DB_KEY}') AS char) FROM users WHERE users.username = '${username}'`;
+    static isUser(email) {
+        let sql = `SELECT cast(aes_decrypt(password, '${process.env.DB_KEY}') AS char) FROM users WHERE users.email = '${email}'`;
 
         return db.execute(sql)
     }

@@ -1,0 +1,140 @@
+@import url(main.css);
+
+.account-title {
+    font-family: 'Lexend Tera', sans-serif;
+}
+
+.account-info {
+    padding: 60px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.account-info-holder {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.account-info h1, h2, h3 {
+    font-family: 'Lexend Tera', sans-serif;
+}
+
+.account-btn {
+    border: none;
+    padding: none;
+    margin-left: -5px;
+    background: none;
+}
+
+.account-link {
+    color:black;
+    text-decoration: none;
+}
+
+.btn-holder {
+    margin-left: -5px;
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-holder button {
+    background: none;
+    cursor: pointer;
+    border: none;
+    text-decoration-line: underline;
+}
+
+.hide-password-change {
+    display: none;
+}
+
+.account-info-selector {
+
+}
+
+.button-selected {
+    text-decoration-line: underline;
+    color: var(--mainColor);
+}
+
+.purchase-history-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.purchase-history-table td {
+    padding: 20px
+}
+
+.purchase-history-table td:last-child {
+    text-align: right;
+}
+
+.purchase-history-table tr {
+    height: 50px;
+    left: 10px;
+    right: 10px;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 10px;
+}
+
+.purchase-history-table tr:first-child {
+    border: none;
+}
+
+.purchase-order-link {
+    color: black
+}
+
+.order-table {
+    width: 45rem;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.order-table tr {
+    border-bottom: 1px rgb(209, 207, 207) solid;
+}
+
+.order-table td {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.order-table td:last-child {
+    text-align: right;
+}
+
+.order-table tr:nth-child(1) {
+    font-family: 'Lexend Tera', sans-serif;
+    font-weight: 100;
+}
+
+.order-table tr:last-child {
+    border: none;
+}
+
+.right-border {
+    border-right: solid 1px rgb(209, 209, 209);
+}
+
+.order-link {
+    text-decoration: none;
+    color: black;
+}
+
+.order-button {
+    background: var(--mainColorTwo);
+    border: color(var(--mainColorTwo));
+    padding: 6%;
+    font-size: 1.1rem;
+    border-radius: 40px;
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+.admin-container {
+    border: 1px solid black;
+    width: 100%;
+}
+

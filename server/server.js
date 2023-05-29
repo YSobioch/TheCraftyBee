@@ -13,6 +13,7 @@ const cartRoute = require('./routes/cart')
 const purchasedItemsRoute = require('./routes/purchasedItems')
 const receiptRoute = require('./routes/receipt')
 const collectionRoute = require('./routes/collections')
+const colorAndShapeRoute = require('./routes/colorAndShape')
 
 app.use(cors());
 app.use(express.json());
@@ -26,6 +27,7 @@ app.use('/cart', cartRoute)
 app.use('/users', usersRoute)
 app.use('/receipts', receiptRoute)
 app.use('/purchasedItems', purchasedItemsRoute)
+app.use('/colorsAndShapes', colorAndShapeRoute)
 app.post('/', (req, res) => {res.send('ended up here')})
 
 app.listen(8000, () => {
