@@ -4,7 +4,8 @@ const router = express.Router();
 
 router.route("/")
         .get(lP.getAllListing_Pictures)
-        .post(lP.createNewListing_Picture);
+        .post(lP.createNewListing_Picture)
+        .delete(lP.deleteAllListing_PicturesByListingId)
 
 router.route("/:id").get(lP.getListing_PicturesByListingId);
 

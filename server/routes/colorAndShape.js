@@ -7,10 +7,12 @@ router.route("/")
 
 router.route("/color")
     .post(colorAndShape.createNewColor)
+    .put(colorAndShape.updateColor)
     .delete(colorAndShape.deleteColor)
 
 router.route("/shape")
     .post(colorAndShape.createNewShape)
+    .put(colorAndShape.updateShape)
     .delete(colorAndShape.deleteShape)
 
 

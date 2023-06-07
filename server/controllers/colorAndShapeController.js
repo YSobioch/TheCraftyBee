@@ -19,9 +19,21 @@ exports.createNewColor = async (req, res, next) => {
         let color = new ColorAndShape(name)
         color.saveColor()
 
-        res.status(200)
+        res.status(200).json({"created": true})
     } catch (err) {
         console.log(err)
+    }
+}
+
+exports.updateColor = async (req, res, next) => {
+    try {
+        let { id, value } = req.body;
+        ColorAndShape.updateColor(id, value)
+
+        res.status(200).json({"updated": true})
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({"updated": false})
     }
 }
 
@@ -34,6 +46,19 @@ exports.createNewShape = async (req, res, next) => {
         res.status(200)
     } catch (err) {
         console.log(err)
+    }
+}
+
+exports.updateShape = async (req, res, next) => {
+    try {
+        let { id, value } = req.body;
+        ColorAndShape.updateShape(id, value)
+
+        console.log('created')
+        res.status(200).json({"updated": true})
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({"updated": false})
     }
 }
 

@@ -1,0 +1,47 @@
+@import url(main.css);
+
+.picture-selector-holder {
+    position: absolute;
+    z-index: 9999;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.picture-selector-div {
+    background: white;
+    height: 600px;
+    width: 850px;
+    position: absolute;
+    top: 15%;
+    border-radius: 40px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 2px solid rgb(92, 92, 92);
+}
+
+.picture-selector {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.picture-selector-picture {
+    cursor: pointer;
+    height: 200px;
+    width: 200px;
+}
+
+.picture-selector-picture:hover {
+    height: 196px;
+    width: 196px;
+    border: 2px solid black
+}
+
+.hide-picture-selector {
+    display: none;
+}

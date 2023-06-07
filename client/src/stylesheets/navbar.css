@@ -54,6 +54,14 @@
     text-decoration: none;
     color: black;
     list-style: none;
+    display: flex;
+    gap: 5px
+}
+
+.link-style div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .link-style:hover {

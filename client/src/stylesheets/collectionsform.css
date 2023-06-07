@@ -1,0 +1,100 @@
+@import url(main.css);
+
+.collection-form-holder {
+    background: rgba(0, 0, 0, 0.61);
+    position: absolute;
+    z-index: 9000;
+    min-height: 120%;
+    max-height: 200%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.collection-div {
+    background: white;
+    min-height: 600px;
+    z-index: 9001;
+    width: 600px;
+    position: absolute;
+    top: 30px;
+    border-radius: 40px;
+    
+}
+
+.collection-selector-header {
+    text-align: center;
+}
+
+.collection-button-container {
+    margin-left: -10px;
+    padding-left: 10%;
+    padding-right: 10%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+    overflow: auto;
+    scroll-margin: -10px;
+}
+
+.collection-button-container p {
+    text-align: center;
+}
+
+.collection-option {
+    cursor: pointer;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+    transition: .3s ease-out;
+}
+
+.collection-selected {
+    background: var(--mainColorTwo);
+    transition: .3s ease-out;
+}
+
+.collection-info-container {
+    text-align: center;
+}
+
+.collection-info-container img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.collection-info-form textarea {
+    resize: none;
+    width: 400px;
+    height: 50px;
+}
+
+.update-button-holder {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.collection-delete-button {
+    background: var(--offColor);
+}
+
+.collection-exit-button {
+    position: absolute;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    top: 0;
+    right: 0;
+    margin-right: -40px;
+    margin-top: 5px;
+    font-size: 1.8rem;
+    border-radius: 20px;
+    border: 1px;
+    cursor: pointer;
+}

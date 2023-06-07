@@ -1,0 +1,71 @@
+@import url(main.css);
+
+.edit-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.edit-container button {
+    cursor: pointer;
+    background-color: var(--mainColor);
+    border: none;
+    border-radius: 10px;
+    padding: 10px
+}
+
+.edit-listing-holder {
+    display: flex;
+    gap: 40px;
+}
+
+.edit-listing-holder input {
+    width: 300px;
+    height: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.edit-listing-holder input:focus {
+    outline-color: var(--offColor)
+}
+
+.edit-listing-holder select {
+    width:100%;
+}
+
+.edit-listing-holder textarea {
+    width: 300px;
+    height: 200px;
+    resize: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.edit-listing-holder textarea:focus {
+    outline-color: var(--offColor)
+}
+
+.edit-listing-holder label {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.edit-listing-picture-holder {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-listing-pictures {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+}
+
+.selection-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 10px;
+}
+
+.edit-btn-holder {
+    display: flex;
+    gap: 10px;
+}

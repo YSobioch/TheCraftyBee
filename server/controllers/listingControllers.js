@@ -20,15 +20,49 @@ exports.getAllListings = async (req, res, next) => {
 
 exports.createNewListing = async (req, res, next) => {
     try {
-        const { name, description, collection, color, shape, price, saleAmount } = req.body
-        let listing = new Listing(name, description, collection, color, shape, price, saleAmount);
+        let { name, description, description_long, collection, color, shape, price, saleAmount } = req.body
+        let listing = new Listing(name, description, description_long, collection, color, shape, price, saleAmount);
 
-        listing.save();
-        res.status(200);
+        await listing.save();
+        res.status(200).json({"createdListing": true});
     } catch (err) {
         console.log(err);
     }
 } 
+
+exports.updateListing = async (req, res, next) => {
+    try {
+        let {id, name, description, description_long, collection, color, shape, price, saleAmount} = req.body
+        await Listing.updateListing(id, name, description, description_long, collection, color, shape, price, saleAmount)
+
+        res.status(200).json({"updated": true})
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({"updated": false})
+    }
+}
+
+exports.deleteListing = async (req, res, next) => {
+    try {
+        let id = req.body.id;
+        Listing.deleteListing(id)
+
+        res.status(200).json({"deleted": true})
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({"deleted": false})
+    }
+}
+
+exports.getLastListing = async (req, res, next) => {
+    try {
+        let [listing] = await Listing.getNewestListingId()
+        listing = listing[0]
+        res.status(200).json({"listingId": listing.id})
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 exports.getListingById = async (req, res, next) => {
     try {

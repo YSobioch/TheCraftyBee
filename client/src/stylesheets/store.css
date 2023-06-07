@@ -6,6 +6,7 @@
     display: flex;
     gap: 1rem;
     height: 100%;
+    position: relative;
 }
 
 .left-panel {
@@ -178,4 +179,8 @@
 .filter-selected {
     background: var(--mainColorTwo);
     transition: .3s ease-out;
+}
+
+.hide-poppup {
+    display: none;
 }

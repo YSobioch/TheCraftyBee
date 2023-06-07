@@ -1,5 +1,8 @@
+import { PictureSelector } from "../components/PictureSelector"
+
 export function Cart() {
     return (
-        <h1>Cart Page</h1>
+        <div>
+        </div>
     )
 }

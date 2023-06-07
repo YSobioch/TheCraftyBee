@@ -9,7 +9,7 @@ class Collection {
 
     async save(){
         let sql = `
-        INSERT INTO collections(name, description, picture_id) 
+        INSERT INTO collections(name, description, picture) 
         VALUES ('${this.name}', '${this.description}', ${this.picture_id})`
 
         return db.execute(sql)        

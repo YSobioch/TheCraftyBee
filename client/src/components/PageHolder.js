@@ -11,6 +11,7 @@ import { connect } from "react-redux"
 import { useEffect } from "react"
 
 import '../stylesheets/pageholder.css'
+import AddAndEditListing from "./AddAndEditListing"
 
 
 function PageHolder(props) {
@@ -41,6 +42,7 @@ function PageHolder(props) {
                 <Route path="/myAccount" element={<Account />} />
                 <Route path="/myAccount/Admin" element={<Admin />} />
                 <Route path="/listing/:id" element={<Listing />} />
+                <Route path="/listing/AddAndUpdate/:id" element={<AddAndEditListing />} />
                 <Route path="/order/:id" element={<Order />} />
                 <Route path="*" element={<h1>404 Not found</h1>} />
             </Routes>

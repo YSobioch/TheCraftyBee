@@ -11,13 +11,20 @@ const reducer = (state = initalState, action) => {
             newCart.push(action.id)
             return {
                 ...state,
-                cart: newCart
+                cart: [...newCart]
             }
         case "REMOVE_FROM_CART":
             newCart = state.cart
+            for(let i = 0; i < newCart.length; i++) {
+                let item = newCart[i];
+                if(item === action.id) {
+                    newCart.splice(i, 1)
+                }
+            }
+            console.log("removed cart: " + newCart)
             return {
                 ...state,
-                cart: newCart
+                cart: [...newCart]
             }
         case "SIGN_IN":
             return {

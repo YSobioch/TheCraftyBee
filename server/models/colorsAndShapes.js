@@ -39,6 +39,26 @@ class ColorsAndShapes {
         return db.execute(sql)
     }
 
+    static updateShape(id, value) {
+        let sql = `
+        UPDATE shape
+        SET shape = '${value}'
+        WHERE shape.id = ${id}
+        `
+
+        return db.execute(sql)
+    }
+
+    static updateColor(id, value) {
+        let sql = `
+        UPDATE color
+        SET color = '${value}'
+        WHERE color.id = ${id}
+        `
+
+        return db.execute(sql)
+    }
+
     static deleteColor(id) {
         let sql = `
         DELETE FROM color 

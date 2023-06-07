@@ -1,8 +1,10 @@
+import { connect } from "react-redux"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 import '../stylesheets/store.css'
 
-export default function ListingsHolder(props) {
+function ListingsHolder(props) {
     let data = [{name: 'loading', pictures: [{picture_id: 0}, {picture_id: 0}]}]
     let [listings, setListings] = useState(data)
 
@@ -34,27 +36,40 @@ export default function ListingsHolder(props) {
         getListingsInCollection()
     }, [props.collection_id, props.shapeOptions, props.colorOptions])
 
+    const handleAddToCart = (id) => {
+        props.dispatch({ type: "ADD_TO_CART", id: id});
+        window.localStorage.setItem('CRAFT_CART', JSON.stringify(props.cart))
+    }
+
+    const handleRemoveFromCart = (id) => {
+        props.dispatch({ type: "REMOVE_FROM_CART", id: id});
+    }
+
     return (
         <>
         <h1 className="collection-title">{props.name ? props.name : 'All Products'}</h1>
+        {props.admin ? <Link to={`/listing/AddAndUpdate/null`} className="admin-link"><h3>Add listing</h3></Link> : <></>}
         <br></br>
         <div className="listing-grid">
             {listings.map((listing, index) => {
                 return (
                     <div className="listing">
-                        <img src={`${process.env.REACT_APP_DOMAIN}/pictures/${listing.pictures[0].picture_id}`} className="primary"/>
+                        <Link to={`/listing/${listing.id}`}><img src={`${process.env.REACT_APP_DOMAIN}/pictures/${listing.pictures[0].picture_id}`} className="primary"/></Link>
                         <div className="info-holder primary">
                             <h1>{listing.name}</h1>
                             <p className="description"><i>{listing.description}</i></p>
                             <p className="price">$ {insertDecimal(listing.price)}</p>
                         </div>
-                        <img src={`${process.env.REACT_APP_DOMAIN}/pictures/${listing.pictures[1].picture_id}`} className="secondary"/>
+                        <Link to={`/listing/${listing.id}`}><img src={`${process.env.REACT_APP_DOMAIN}/pictures/${listing.pictures[1].picture_id}`} className="secondary"/></Link>
                         <div className="listing-line slow-transition"></div>
                         <div className="info-holder secondary">
                             <h1>{listing.name}</h1>
                             <p className="description"><i>{listing.description}</i></p>
                             <div className="button-holder slow-transition">
-                                <button className="cart-button">ADD TO CART - ${insertDecimal(listing.price)}</button>
+                                {props.cart.indexOf(`${listing.id}`) > -1 ? 
+                                    <button className="cart-button" onClick={() => handleRemoveFromCart(`${listing.id}`)}>REMOVE FROM CART</button> 
+                                    : <button className="cart-button" onClick={() => handleAddToCart(`${listing.id}`)}>ADD TO CART - ${insertDecimal(listing.price)}</button> 
+                                }
                             </div>
                         </div>
                     </div>
@@ -88,3 +103,7 @@ export default function ListingsHolder(props) {
         </>
     )
 }
+
+const mapStateToProps = state => ({ cart: state.cart})
+
+export default connect(mapStateToProps)(ListingsHolder)

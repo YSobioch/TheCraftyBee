@@ -1,0 +1,66 @@
+@import url(main.css);
+
+.filter-form-holder {
+    background: rgba(0, 0, 0, 0.61);
+    position: absolute;
+    z-index: 9000;
+    min-height: 120%;
+    max-height: 200%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.filter-div {
+    background: white;
+    min-height: 400px;
+    z-index: 9001;
+    width: 400px;
+    position: absolute;
+    top: 30px;
+    border-radius: 40px;
+    text-align: center;
+}
+
+.filter-div button {
+    background: var(--mainColorTwo);
+    border-style: solid;
+    border-radius: 5px;
+    border-color: var(--mainColorTwo);
+    cursor: pointer;
+}
+
+.filter-options-shapeAndColor-holder {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    justify-content: center;
+}
+
+.filter-options-shapeAndColor-holder h4 {
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+}
+
+.filter-options-shapeAndColor-holder h4:hover {
+    transition: .2s ease-out;
+    background: var(--mainColor);
+    cursor: pointer;
+}
+
+.filter-options-exit-button {
+    position: absolute;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    top: 0px;
+    right: 0px;
+    margin-right: -40px;
+    margin-top: 5px;
+    font-size: 1.8rem;
+    border-radius: 20px;
+    border: 1px;
+    cursor: pointer;
+}

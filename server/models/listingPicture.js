@@ -15,6 +15,12 @@ class ListingPicture {
         let sql = `SELECT picture_id FROM listing_pictures WHERE listing_pictures.picture_owner_id = ${id}`
         return db.execute(sql)
     }
+
+    static deleteListing_PicturesByListingId(id) {
+        let sql = `DELETE FROM listing_pictures WHERE listing_pictures.picture_owner_id = ${id}`
+
+        return db.execute(sql)
+    }
 }
 
 module.exports = ListingPicture
