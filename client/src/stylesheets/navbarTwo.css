@@ -8,6 +8,10 @@
     font-family: 'Merriweather', serif;
 }
 
+.navigation li {
+    cursor: pointer;
+}
+
 .link {
     text-decoration: none;
     color: black;

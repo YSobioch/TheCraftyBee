@@ -3,7 +3,7 @@
 .collection-form-holder {
     background: rgba(0, 0, 0, 0.61);
     position: absolute;
-    z-index: 9000;
+    z-index: 1000;
     min-height: 120%;
     max-height: 200%;
     width: 100%;

@@ -2,7 +2,7 @@
 
 .picture-selector-holder {
     position: absolute;
-    z-index: 9999;
+    z-index: 1999;
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -11,13 +11,13 @@
 }
 
 .picture-selector-div {
-    background: white;
-    height: 600px;
+    background: rgb(255, 255, 255);
+    height: 800px;
     width: 850px;
+    z-index: 2000;
     position: absolute;
     top: 15%;
     border-radius: 40px;
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -28,6 +28,8 @@
     justify-content: center;
     display: grid;
     grid-template-columns: auto auto auto auto;
+    overflow-y: auto;
+    padding-bottom: 10px;
 }
 
 .picture-selector-picture {
@@ -44,4 +46,23 @@
 
 .hide-picture-selector {
     display: none;
+}
+
+.picture-selector-exit-button {
+    position: absolute;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    top: 0;
+    right: 0;
+    margin-right: -40px;
+    margin-top: 5px;
+    font-size: 1.8rem;
+    border-radius: 20px;
+    border: 1px;
+    cursor: pointer;
+}
+
+.hide-picture-selector {
+    visibility: hidden;
 }

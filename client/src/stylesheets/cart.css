@@ -1,0 +1,82 @@
+@import url(main.css);
+
+.cart-container {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.cart-listing {
+    border: 1px solid var(--mainColorTwo);
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 10px;
+    display: flex;
+    margin-top: 5px;
+    height: 220px;
+    border-radius: 5px;
+}
+
+.checkbox-holder {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.cart-listing :nth-child(4) {
+    padding: 10px;
+    margin-left: auto;
+}
+
+.cart-listing img {
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+}
+
+.cart-listing-info {
+    padding: 10px;
+    max-width: 50%;
+    position: relative;
+}
+
+.cart-listing-price {
+    text-align: center;
+}
+
+.cart-listing-info-paragraph {
+    margin-top: -10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.cart-listing-info-sold-status {
+    margin-top: -10px;
+    font-size: 13px;
+}
+
+.cart-listing-info-removal {
+    font-size: 13px;
+    bottom: 0;
+    position: absolute;
+    color: rgb(106, 129, 106);
+    cursor: pointer;
+}
+
+.cart-total {
+    display: flex;
+}
+
+.cart-total-selector {
+    padding: 10px;
+    margin-left: auto;
+}
+
+.cart-total-selector button {
+    background-color: var(--offColor);
+    height: 50px;
+    width: 200px;
+    border-radius: 30px;
+    border: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    cursor: pointer;
+}

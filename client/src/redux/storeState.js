@@ -21,7 +21,6 @@ const reducer = (state = initalState, action) => {
                     newCart.splice(i, 1)
                 }
             }
-            console.log("removed cart: " + newCart)
             return {
                 ...state,
                 cart: [...newCart]

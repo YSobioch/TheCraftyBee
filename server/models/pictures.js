@@ -37,6 +37,25 @@ class Pictures {
 
         return db.execute(sql)
     }
+
+    static getPictureIdByName(name) {
+        let sql = `
+        SELECT id FROM pictures WHERE pictures.picture = '${name}'
+        `
+
+        return db.execute(sql)
+    }
+
+    static isUsedPicture(id) {
+        let sql = `
+        select * from pictures
+        inner join listing_pictures on pictures.id = listing_pictures.picture_id
+        left join collections on pictures.id = collections.picture
+        where pictures.id = ${id}
+        `
+
+        return db.execute(sql)
+    }
 }
 
 module.exports = Pictures

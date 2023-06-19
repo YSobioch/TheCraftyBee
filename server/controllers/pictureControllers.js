@@ -24,6 +24,7 @@ exports.getAllPictures = async (req, res, next) => {
 //For POST requests use sampleFile as file
 exports.createNewPicture = async (req, res, next) => {
     try {
+    console.log('post route')
     let sampleFile;
     let uploadPath;
 
@@ -32,7 +33,8 @@ exports.createNewPicture = async (req, res, next) => {
     }
 
     // name of the input is sampleFile
-    sampleFile = req.files.sampleFile
+    sampleFile = req.files.new_picture
+    sampleFile.name = Date.now() + sampleFile.name
     uploadPath = '../server/images/' + sampleFile.name;
 
     let picture = new Picture(sampleFile.name);
@@ -42,12 +44,12 @@ exports.createNewPicture = async (req, res, next) => {
     sampleFile.mv(uploadPath, function(err) {
         if(err) return res.status(500).send(err);
 
-        res.status(200).json({"PictureCreated": true});
+        res.status(200)
     })
 
     } catch (err) {
         console.log(err)
-        res.status(500).json({"PictureCreated": false})
+        res.status(500)
     }
 }
 
@@ -55,16 +57,37 @@ exports.createNewPicture = async (req, res, next) => {
 exports.deletePicture = async (req, res, next) => {
     try {
         let fileName = req.params.name;
-        let deletePath = '../server/images/' + fileName;
+        let [id, _] = await Picture.getPictureIdByName(fileName)
+        id = id[0].id
+        let [usedPicture] = await Picture.isUsedPicture(id)
+        if(!usedPicture.length) {
+            let fileName = req.params.name;
+            let deletePath = '../server/images/' + fileName;
 
-        Picture.deletePictureByName(fileName)
-        fs.unlink(deletePath, (err) => {
-            console.log("Couldn't Unlink")
-            console.log(err)
-        })
+            Picture.deletePictureByName(fileName)
+            fs.unlink(deletePath, (err) => console.log(err))
+                res.json({"message": "Deleted Picture!"})
+        } else {
+            res.json({"message": "Couldn't delete picture because it's currently used in a listing or collection"})
+        }
     } catch (err) {
         console.log(err)
+        res.json({"message": "Something went wrong, couldn't delete picture"})
     }
+    // try {
+    //     let fileName = req.params.name;
+    //     let deletePath = '../server/images/' + fileName;
+
+    //     Picture.deletePictureByName(fileName)
+    //     fs.unlink(deletePath, (err) => {
+    //         console.log("Couldn't Unlink")
+    //         console.log(err)
+    //     })
+    //     res.json({"deleted": true})
+    // } catch (err) {
+    //     console.log(err)
+    //     res.json({"deleted": false})
+    // }
 }
 
 //sends the picture that matches the id

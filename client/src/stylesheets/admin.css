@@ -1,0 +1,17 @@
+.picture-holder-admin {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    height: 450px;
+    width: 818px;
+    overflow-y: scroll;
+}
+
+.picture-holder-admin img {
+    height: 200px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.picture-holder-admin img:hover {
+    filter: invert(0%) sepia(13%) saturate(0%) hue-rotate() brightness(95%) contrast(100%);
+}

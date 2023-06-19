@@ -26,7 +26,6 @@ function NavbarOne(props) {
   }
 
   useEffect(() => {
-    console.log(props.cart)
     setCartFilled(props.cart.length > 0)
   }, [props.cart])
 

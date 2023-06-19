@@ -202,7 +202,9 @@ function Account(props) {
                 <div className="line"></div>
                 <p id="Account Info" className="account-info-selector button-selected" onClick={() => accountSelectedHandler("Account Info")}>Account Info</p>
                 <p id="Purchase History" className="account-info-selector" onClick={() => accountSelectedHandler("Purchase History")}>Purchase History</p>
-    
+                {user.admin ? 
+                <p id="Admin" className="account-info-selector" onClick={() => accountSelectedHandler("Admin")}>Admin</p>
+                : <></>}
                 <button className="account-btn"><Link className="account-link" to="/" onClick={() => handleLoggout()}>LOG OUT</Link></button>
             </div>
             <div className="right-panel"> 
