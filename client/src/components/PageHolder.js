@@ -6,6 +6,7 @@ import Account from "../pages/Account"
 import { Admin } from "../pages/Admin"
 import { Order } from "../components/Order"
 import SignIn from "./SignInPoppup"
+import SuccessfulPurchase from "./SuccessfulPurchase"
 import Listing from "../pages/Listing"
 import { connect } from "react-redux"
 import { useEffect } from "react"
@@ -37,7 +38,9 @@ function PageHolder(props) {
         <div className="pageholder">
             <Routes>
                 <Route path="/" element={<Home />}/>
+                <Route path="/purchased/:arr/:id" element={<SuccessfulPurchase />}/>
                 <Route path="/store" element={<Store />} />
+                <Route path="/store/:collection" element={<Store />} />
                 <Route path="/myCart" element={<Cart />} />
                 <Route path="/myAccount" element={<Account />} />
                 <Route path="/myAccount/Admin" element={<Admin />} />

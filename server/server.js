@@ -1,4 +1,6 @@
-require("dotenv").config();
+if(process.env.NODE_ENV !== "production") {
+    require("dotenv").config();
+}
 
 const express = require('express');
 const cors = require('cors');
@@ -15,6 +17,7 @@ const receiptRoute = require('./routes/receipt')
 const collectionRoute = require('./routes/collections')
 const colorAndShapeRoute = require('./routes/colorAndShape')
 
+app.use('/receipts', receiptRoute)
 app.use(cors());
 app.use(express.json());
 app.use(fileUpload())
@@ -25,7 +28,7 @@ app.use('/listingPictures', listingPicturesRoute)
 app.use('/collections', collectionRoute)
 app.use('/cart', cartRoute)
 app.use('/users', usersRoute)
-app.use('/receipts', receiptRoute)
+
 app.use('/purchasedItems', purchasedItemsRoute)
 app.use('/colorsAndShapes', colorAndShapeRoute)
 app.post('/', (req, res) => {res.send('ended up here')})

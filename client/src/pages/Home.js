@@ -28,7 +28,7 @@ export function Home() {
         <div>
             <PanelPictures />
         </div>
-        </div>
+        <br></br>
         <div className='sign-up'>
             <div className='sign-up-grid'>
                 <div>
@@ -43,6 +43,8 @@ export function Home() {
                 </div>
             </div>
         </div>
+        </div>
+
         </>
     )
 }

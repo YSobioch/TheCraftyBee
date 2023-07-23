@@ -13,7 +13,8 @@ const store = createStore(reducer);
 function App() {
   return (
     <Provider store={store}>
-      <div>
+      <div className="testingOut">
+      <div >
         <NavbarOne />
         <div className="line"></div>
         <NavbarTwo />
@@ -25,6 +26,7 @@ function App() {
       </div>
       <div>
         
+      </div>
       </div>
     </Provider>
   )

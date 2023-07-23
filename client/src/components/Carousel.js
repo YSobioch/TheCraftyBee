@@ -35,7 +35,7 @@ export default function Carousel() {
         <>
         <ul className='select-by'>
                 <li>SHOP BY:</li>
-                {selected}
+                <li id="0" className="selected" onClick={() => {selectionHelper(0)}}>collection</li>
         </ul>
         <CarouselPictures />
         </>

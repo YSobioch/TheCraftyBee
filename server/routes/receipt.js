@@ -6,6 +6,9 @@ router.route('/')
     .get(receiptController.createReceiptForm)
     .post(receiptController.createReceipt)
 
+router.route('/paidReciept')
+    .post(express.raw({type: 'application/json'}), receiptController.createReceiptFromWebhook)
+
 router.route('/ById/:id')
     .get(receiptController.getReciptById)
 

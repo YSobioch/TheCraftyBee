@@ -119,6 +119,15 @@ class listing {
         return db.execute(sql)
     }
 
+    static findMultipleById(arr) {
+        let sql = `SELECT * FROM listings WHERE listings.id = ${arr[0]}`
+        for(let i = 1; i < arr.length; i++) {
+            let id = arr[i]
+            sql += ` OR listings.id = ${id}`
+        }
+
+        return db.execute(sql)
+    }
 
 }
 

@@ -4,10 +4,12 @@ import ListingsHolder from '../components/LisitngsHolder'
 import { AddFilterOption } from '../components/AddFilterOption'
 
 import '../stylesheets/store.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { CollectionsForm } from '../components/CollectionsForm'
 
 function Store(props) {
+    let {collection} = useParams("collection")
+    console.log(collection)
     let [collections, setCollections] = useState([{name: 'loading'}])
     let [colors, setColors] = useState([])
     let [shapes, setShapes] = useState([])
@@ -18,8 +20,17 @@ function Store(props) {
 
     const getCollections = async () => {
         let res = await fetch(`${process.env.REACT_APP_DOMAIN}/collections`)
-        let collection = await res.json()
-        setCollections(collection)
+        let newCollection = await res.json()
+        setCollections(newCollection)
+        if(collection) {
+            let [_ , newFocusedCollection] = newCollection.map((currentCollection) => {
+                if(currentCollection.id == collection) {
+                    console.log(currentCollection)
+                    return currentCollection
+                }
+            })
+            if(newFocusedCollection) setFocusedCollection(newFocusedCollection)
+        }
     }
 
     const getColorsAndShapes = async () => {
@@ -67,6 +78,8 @@ function Store(props) {
         setUpdated(false)
     }, [updated === true])
 
+    useEffect(() => console.log(focusedCollection), [focusedCollection])
+
     const showPoppup = (id) => {
         console.log('called function')
         let element = document.getElementById(id)
@@ -92,10 +105,12 @@ function Store(props) {
         <div className='left-panel'>
             <img src={require('../assets/shop.jpg')}  className='banner-img'/>
             <h1 className='banner-title'>Collections <span><Link className='admin-link' onClick={() => showPoppup('collection-poppup')}>+</Link></span></h1>
+            <div className='collection-selection-wrapper'>
             <p className='collection-name' onClick={() => setFocusedCollection(null)}>All Products</p>
             {collections.map((collection, index) => {
                 return <p className='collection-name' key={index} onClick={() => setFocusedCollection(collection)}>{collection.name}</p>
             })}
+            </div>
             <br></br>
             <h3 className='banner-title'>Filter <span><Link className='admin-link' onClick={() => showPoppup('filter-poppup')}>+</Link></span></h3>
             <h4 className='filter-title'>Type</h4>
@@ -126,24 +141,32 @@ function Store(props) {
         <div className='store-container'>
         <div className='left-panel'>
             <img src={require('../assets/shop.jpg')}  className='banner-img'/>
+            <div className='show-on-mobile'><div className='line'></div></div>
             <h1 className='banner-title'>Collections</h1>
+            <div className='line'></div>
+            <div className='collection-selection-wrapper'>
             <p className='collection-name' onClick={() => setFocusedCollection(null)}>All Products</p>
             {collections.map((collection, index) => {
                 return <p className='collection-name' key={index} onClick={() => setFocusedCollection(collection)}>{collection.name}</p>
             })}
-            <br></br>
-            <h3 className='banner-title'>Filter </h3>
-            <h4 className='filter-title'>Type</h4>
-            <div className='filter-options-holder'>
-                {shapes.map((shape, index) => {
-                    return <p key={index} id={`shape-${shape.id}`} className='filter-option' onClick={() => handleShapes(shape.id)}>{shape.shape}</p>
-                })}
             </div>
-            <h4 className='filter-title'>Color</h4>
-            <div className='filter-options-holder'>
-                {colors.map((color, index) => {
-                    return <p key={index} id={`color-${color.id}`} className='filter-option' onClick={() => handleColors(color.id)}>{color.color}</p>
-                })}
+            <div className='show-on-mobile'><div className='line'></div></div>
+            <br></br>
+            <div className='hide-on-mobile'>
+                <h3 className='banner-title'>Filter </h3>
+                <div className='line'></div>
+                <h4 className='filter-title'>Type</h4>
+                <div className='filter-options-holder'>
+                    {shapes.map((shape, index) => {
+                        return <p key={index} id={`shape-${shape.id}`} className='filter-option' onClick={() => handleShapes(shape.id)}>{shape.shape}</p>
+                    })}
+                </div>
+                <h4 className='filter-title'>Color</h4>
+                <div className='filter-options-holder'>
+                    {colors.map((color, index) => {
+                        return <p key={index} id={`color-${color.id}`} className='filter-option' onClick={() => handleColors(color.id)}>{color.color}</p>
+                    })}
+                </div>
             </div>
         </div>
         

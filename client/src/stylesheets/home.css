@@ -53,8 +53,10 @@
 
 .sign-up {
     background: var(--mainColor);
-    padding: 1rem 20% 2rem 20%;
+    padding: 1rem 30% 2rem 30%;
     margin-bottom: -10px;
+    width: 100vw;
+    margin-left: -30%;
 }
 
 .sign-up-grid {
@@ -96,6 +98,7 @@
     .container {
         margin: 0;
         overflow: hidden;
+        border: 1px solid black;
     }
 
     .outerContainer {
@@ -103,4 +106,15 @@
         grid-template-columns: auto;
     }
 
+    .leftContainer {
+        padding-bottom: 20px;
+    }
+
+    .sign-up {
+        padding: none;
+    }
+
+    .sing-up-grid {
+        grid-template-columns: auto;
+    }
 }

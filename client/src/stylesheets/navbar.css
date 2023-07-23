@@ -32,6 +32,7 @@
     padding: 10px;
 }
 
+
 .mobile-nav-toggle {
     display: none;
 }
@@ -40,13 +41,19 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    
+    display: flex;
+    justify-content: center;
+}
+
+.center-title {
+    width: 40%;
 }
 
 .title-style {
     text-decoration: none;
     color: black;
     list-style: none;
+    margin-left: 17px;
 }
 
 .link-style {
@@ -73,13 +80,17 @@
 @media (max-width: 35em) {
     .primary-navigation {
         position: fixed;
-        inset: 0 0 0 65%;
+        inset: 0 0 0 45%;
         z-index: 1000;
         flex-direction: column;
         padding: min(10vh, 10rem) 1em;
         transition: transform 250ms ease-out;
         transform: translateX(0%);
         background: var(--mainColorTwo);
+    }
+
+    .title-style {
+        margin-left: 0px;
     }
 
     .flex {

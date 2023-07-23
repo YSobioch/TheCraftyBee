@@ -138,7 +138,7 @@ function AddAndEditListing(props) {
     }
 
     useEffect(() => {
-        if(id !== null) {
+        if(id !== 'null') {
             getListing(id)
         }
         getCollections()

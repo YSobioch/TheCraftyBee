@@ -32,32 +32,28 @@ function NavbarOne(props) {
   useEffect(() => {console.log(props.cart)}, [])
 
   return (
-    <div className='primary-header'>
+    <div>
       <div className={signIn}>
         <SignIn toggle={handleSignInToggle}/>
       </div>
+    <div className='primary-header'>
       <div className='site-title-mobile'><Link to="/" className='title-style'>The Crafty Bee</Link></div>
       <button className='mobile-nav-toggle' onClick={handleToggle}
       aria-controls='primary-navigation' aria-expanded="false">
         <span className='sr-only'>Menu</span></button>
-
-      <nav>
+      <nav className=''>
         <ul id="primary-navigation" className={toggled}>
           <li className='active'><Link to="/" onClick={handleToggle} className='link-style'>Home</Link></li>
-          <li><Link to="/store" onClick={handleToggle} className='link-style'><div><img src={servicesIcon} /></div><div>Shop</div></Link></li>
-          <li className='site-title'></li>
-          <li className='site-title'></li>
-          <li className='site-title'><Link to="/" className='title-style'>The Crafty Bee</Link></li>
-          <li className='site-title'></li>
-          <li className='site-title'></li>
-          <li><Link to="/myCart" onClick={handleToggle} className='link-style'>{cartFilled ? <img src={filledCart} /> : <img src={cart} />}</Link></li>
+          <li><Link to="/store" onClick={handleToggle} className='link-style'><div><img src={servicesIcon}/></div><div>Shop</div></Link></li>
+          <div className='center-title'><li className='site-title'><Link to="/" className='title-style'>The Crafty Bee</Link></li></div>
+          <li><Link to="/myCart" onClick={handleToggle} className='link-style'>{cartFilled ? <div><img src={filledCart} /><div>Bag</div></div> : <div><img src={cart} /><div>Bag</div></div>}</Link></li>
           {props.user ? 
-          <li><Link to='/myAccount' className='link-style'><img src={profileIcon} /></Link></li> :
-          <li className='link-style' onClick={handleSignInToggle}><img src={profileIcon} /></li>  
+          <li><Link to='/myAccount' className='link-style'><div><img src={profileIcon} /><div>Account</div></div></Link></li> :
+          <li className='link-style' onClick={handleSignInToggle}><div><img src={profileIcon} /><div>Sign In</div></div></li>  
           }
-          
         </ul>
       </nav>
+    </div>
     </div>
   )
 } 

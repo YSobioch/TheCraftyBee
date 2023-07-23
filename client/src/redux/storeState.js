@@ -25,6 +25,16 @@ const reducer = (state = initalState, action) => {
                 ...state,
                 cart: [...newCart]
             }
+        case "ADD_CART":
+            return {
+                ...state,
+                cart: action.cart
+            }
+        case "EMPTY_CART":
+            return {
+                ...state,
+                cart: []
+            }
         case "SIGN_IN":
             return {
                 ...state,

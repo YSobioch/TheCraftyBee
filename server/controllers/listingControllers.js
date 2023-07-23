@@ -74,6 +74,7 @@ exports.getListingById = async (req, res, next) => {
             thisListing.pictures = listingPictures
         }
 
+        if(listing[0] === undefined) res.status(200).json(null)
         res.status(200).json(listing[0])
     } catch (err) {
         console.log(err)

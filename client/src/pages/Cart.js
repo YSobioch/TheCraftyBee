@@ -13,6 +13,8 @@ function Cart(props) {
     const getCartListings = async (id) => {
         let res = await fetch(`${process.env.REACT_APP_DOMAIN}/listings/${id}`)
         let listing = await res.json() 
+        if(listing === null) handleRemoveFromCart(id)
+        console.log("listing is " + listing)
         return listing 
     }
 
@@ -30,6 +32,29 @@ function Cart(props) {
     const handleRemoveFromCart = (id) => {
         props.dispatch({ type: "REMOVE_FROM_CART", id: id});
         window.localStorage.setItem('CRAFT_CART', JSON.stringify(props.cart))
+    }
+
+    const handleCheckOut = async () => {
+        let ids = []
+        let accountNum = props.user !== null ? props.user.id : 0;
+        for(let i = 0; i < cart.length; i++) {
+            if(!checked[i]) continue;
+            ids.push(cart[i].id)
+        }
+        
+        let res = await fetch(`${process.env.REACT_APP_DOMAIN}/cart/checkout`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                items: ids,
+                account: accountNum
+            })
+        })
+
+        let url = await res.json()
+        window.location = url.url
     }
 
     useEffect(() => {
@@ -88,7 +113,7 @@ function Cart(props) {
                 <div className='cart-total-selector'>
                     <div>
                         <h3>Total: ${(total / 100).toFixed(2)}</h3>
-                        <button>Checkout</button>
+                        <button onClick={handleCheckOut}>Checkout</button>
                     </div>
                     
                 </div>

@@ -1,5 +1,8 @@
+const stripe = require('stripe')(process.env.STRIPE_SK)
 const Cart = require('../models/cart')
+const Listing = require('../models/listings')
 const updateAndDelete = require('../models/updateAndDelete')
+
 
 exports.getAllCarts = async (req, res, next) => {
     res.send(`
@@ -63,4 +66,58 @@ exports.deleteCartForm = async (req, res, next) => {
         <input type="submit" value="Submit">
         </form>    
     `)
+}
+
+//Checkout
+exports.checkout = async (req, res, next) => {
+    try {
+        let items = req.body.items;
+        let [lineItems] = await Listing.findMultipleById(items)
+    
+        const session = await stripe.checkout.sessions.create({
+            shipping_address_collection: {
+                allowed_countries: ['US']
+            },
+            shipping_options: [{
+                shipping_rate_data: {
+                    type: 'fixed_amount',
+                    fixed_amount: {
+                        amount: 300,
+                        currency: 'usd',
+                    },
+                    display_name: 'Free shipping',
+                    delivery_estimate: {
+                        minimum: {
+                            unit: 'business_day',
+                            value: 5,
+                        },
+                        maximum: {
+                            unit: 'business_day',
+                            value: 7,
+                        },
+                    },
+                },
+            }],
+            payment_method_types: ['card'],
+            mode: 'payment',
+            line_items: lineItems.map(item => {
+                return {
+                    price_data: {
+                        currency: 'usd',
+                        product_data: {
+                            name: item.name,
+                        },
+                        unit_amount: item.price
+                    },
+                    quantity: 1
+                }
+           }),
+           success_url: `${process.env.CLIENT_DOMAIN}/purchased/${req.body.items}/${req.body.account}`,
+           cancel_url: `${process.env.CLIENT_DOMAIN}/myCart`,
+        })
+
+        res.json({ url: session.url })
+    } catch (err) {
+        res.status(500).json({url: err.message})
+    }
 }
